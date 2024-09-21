@@ -1,9 +1,9 @@
 {% set name = "gds-lowlatency-tools" %}
-{% set version = "3.0.0" %}
+{% set version = "3.0.1" %}
 
 # dependencies
-{% set gds_base_version = "3.0.0" %}
-{% set gds_lsmp_version = "3.0.0" %}
+{% set gds_base_version = "3.0.1" %}
+{% set gds_lsmp_version = "3.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -11,15 +11,16 @@ package:
 
 source:
   url: https://software.igwn.org/sources/source/{{ name }}-{{ version }}.tar.gz
-  sha256: 77ad1e6698ae8820db3a32e860a8718b312a0c8e6ffd66ebad9bf40196c4d0d7
+  sha256: 30827e472929f0e2d451eb6504c656726ea2446ca570b3e04417fd6487a037dc
 
 build:
   number: 0
-  skip: true  # [win]
+  skip: true  # [not linux]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - make
     - pkg-config
   host:
